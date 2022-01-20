@@ -96,7 +96,7 @@
                 ]"
               >
                 <i
-                  class="fas fa-tv mr-2 text-sm"
+                  class="fas fa-hdd mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
                 My Files
@@ -106,7 +106,7 @@
 
           <li class="items-center">
             <router-link
-              to="/files/settings"
+              to="/files/shared"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -120,7 +120,7 @@
                 ]"
               >
                 <i
-                  class="fas fa-tools mr-2 text-sm"
+                  class="fas fa-share-square mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
                 Shared
@@ -130,7 +130,7 @@
 
           <li class="items-center">
             <router-link
-              to="/files/tables"
+              to="/files/recent"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -144,7 +144,7 @@
                 ]"
               >
                 <i
-                  class="fas fa-table mr-2 text-sm"
+                  class="fas fa-calendar-plus mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
                 Recent
@@ -153,7 +153,7 @@
           </li>
 
           <li class="items-center">
-            <router-link to="/files/maps" v-slot="{ href, navigate, isActive }">
+            <router-link to="/files/starred" v-slot="{ href, navigate, isActive }">
               <a
                 :href="href"
                 @click="navigate"
@@ -165,7 +165,7 @@
                 ]"
               >
                 <i
-                  class="fas fa-map-marked mr-2 text-sm"
+                  class="fas fa-star mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
                 Starred
@@ -175,7 +175,7 @@
 
 
           <li class="items-center">
-            <router-link to="/files/maps" v-slot="{ href, navigate, isActive }">
+            <router-link to="/files/trashed" v-slot="{ href, navigate, isActive }">
               <a
                   :href="href"
                   @click="navigate"
@@ -187,10 +187,10 @@
                 ]"
               >
                 <i
-                    class="fas fa-map-marked mr-2 text-sm"
+                    class="fas fa-trash-alt mr-2 text-sm"
                     :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
-                Deleted
+                Trashed
               </a>
             </router-link>
           </li>

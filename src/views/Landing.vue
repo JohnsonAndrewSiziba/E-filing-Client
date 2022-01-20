@@ -26,8 +26,11 @@
                   Secure storage for all your important files
                 </p>
                 <div class="bootstrap-iso">
-                  <p>
-                    <a href="/auth/login" class="btn btn-outline-info btn-lg px-5 mt-2">Login / Signup</a>
+                  <p v-if="showLogin === true">
+                    <router-link to="/auth/login"> <a href="/auth/login" class="btn btn-outline-light btn-lg px-5 mt-2">Login / Signup</a> </router-link>
+                  </p>
+                  <p v-else>
+                    <router-link to="/files"> <a href="/files" class="btn btn-outline-light btn-lg px-5 mt-2">Continue To Account</a> </router-link>
                   </p>
                 </div>
               </div>
@@ -220,11 +223,18 @@ export default {
       team3,
       team4,
       cabinet,
+      showLogin: true
     };
   },
   components: {
     Navbar,
     FooterComponent,
   },
+  created() {
+    let sesame = localStorage.getItem('e_files_sesame');
+    if (sesame) {
+      this.showLogin = false;
+    }
+  }
 };
 </script>

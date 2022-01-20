@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
   <div>
     <div
@@ -8,7 +10,7 @@
         <div class="flex flex-wrap items-center">
           <div class="relative w-full max-w-full flex-grow flex-1">
             <h3 class="uppercase text-blueGray-700 mb-1 text-xs font-semibold">
-              My Files
+              Files Shared With Me
             </h3>
             <div class="flex flew-row justify-content-between mt-3">
               <div class="mr-2">
@@ -23,19 +25,22 @@
     </div>
 
     <div class="bootstrap-iso" style="min-height: 300px">
-     <FileManager></FileManager>
+      <FileManager></FileManager>
     </div>
   </div>
 </template>
+
 <script>
 import FileManager from "@/components/Files/FileManager";
 export default {
-  name: "dashboard-page",
-  components: {
-    FileManager,
-  },
+  name: "Shared",
+  components: {FileManager},
   created(){
-    document.title = "My Files"
+    document.title = "Shared With Me"
   }
-};
+}
 </script>
+
+<style scoped>
+
+</style>

@@ -1,3 +1,5 @@
+// import Vue from 'vue'
+
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 
@@ -18,9 +20,7 @@ import Auth from "@/layouts/Auth.vue";
 // views for Admin layout
 
 import Dashboard from "@/views/admin/Dashboard.vue";
-import Settings from "@/views/admin/Settings.vue";
-import Tables from "@/views/admin/Tables.vue";
-import Maps from "@/views/admin/Maps.vue";
+
 
 // views for Auth layout
 
@@ -32,6 +32,11 @@ import Register from "@/views/auth/Register.vue";
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
 import Index from "@/views/Index.vue";
+import Shared from "@/views/admin/Shared";
+import Recent from "@/views/admin/Recent";
+import Starred from "@/views/admin/Starred";
+import Deleted from "@/views/admin/Deleted";
+
 
 // routes
 
@@ -46,16 +51,20 @@ const routes = [
         component: Dashboard,
       },
       {
-        path: "/files/settings",
-        component: Settings,
+        path: "/files/shared",
+        component: Shared,
       },
       {
-        path: "/files/tables",
-        component: Tables,
+        path: "/files/recent",
+        component: Recent,
       },
       {
-        path: "/files/maps",
-        component: Maps,
+        path: "/files/starred",
+        component: Starred,
+      },
+      {
+        path: "/files/trashed",
+        component: Deleted,
       },
     ],
   },
@@ -92,6 +101,7 @@ const routes = [
   // },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
+
 
 
 const router = createRouter({

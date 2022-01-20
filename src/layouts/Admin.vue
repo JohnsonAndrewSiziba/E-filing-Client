@@ -24,5 +24,15 @@ export default {
     HeaderStats,
     FooterAdmin,
   },
+  created() {
+
+  },
+  beforeRouteEnter(to, from, next) {
+    let sesame = localStorage.getItem('e_files_sesame');
+    if (! sesame) {
+      return next('/auth/login');
+    }
+    next();
+  }
 };
 </script>

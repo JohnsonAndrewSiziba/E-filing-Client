@@ -14,12 +14,12 @@
         </div>
       </div>
     </div>
-    <div class="p-4 flex-auto">
-      <!-- Chart -->
-      <div class="relative h-350-px">
-        <canvas id="line-chart"></canvas>
-      </div>
-    </div>
+<!--    <div class="p-4 flex-auto">-->
+<!--      &lt;!&ndash; Chart &ndash;&gt;-->
+<!--      <div class="relative h-350-px">-->
+<!--        <canvas id="line-chart"></canvas>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 <script>
