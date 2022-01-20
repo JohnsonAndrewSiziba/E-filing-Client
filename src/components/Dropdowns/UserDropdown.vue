@@ -27,30 +27,18 @@
       }"
     >
       <a
+          href="javascript:void(0);"
+          class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 d-item"
+      >
+        {{ user.name }}
+      </a>
+      <a
         href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+        @click="logout"
+        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 d-item"
       >
         Logout
       </a>
-<!--      <a-->
-<!--        href="javascript:void(0);"-->
-<!--        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"-->
-<!--      >-->
-<!--        Another action-->
-<!--      </a>-->
-<!--      <a-->
-<!--        href="javascript:void(0);"-->
-<!--        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"-->
-<!--      >-->
-<!--        Something else here-->
-<!--      </a>-->
-<!--      <div class="h-0 my-2 border border-solid border-blueGray-100" />-->
-<!--      <a-->
-<!--        href="javascript:void(0);"-->
-<!--        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"-->
-<!--      >-->
-<!--        Seprated link-->
-<!--      </a>-->
     </div>
   </div>
 </template>
@@ -59,15 +47,57 @@
 import { createPopper } from "@popperjs/core";
 
 import image from "@/assets/img/avatar.png";
+import axios from "axios";
+import API_HOME from "@/variables/apiHome";
 
 export default {
   data() {
     return {
       dropdownPopoverShow: false,
       image: image,
+      user: {},
     };
   },
+  created() {
+    this.getUser();
+  },
   methods: {
+    logout() {
+      // eslint-disable-next-line no-unused-vars
+      axios.get(API_HOME + 'sanctum/csrf-cookie').then(response => {
+        axios.get(API_HOME +'api/logout',  {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('e_files_sesame')}`
+          }
+        })
+            .then(response => {
+              alert(response.data.message);
+              localStorage.removeItem('e_files_sesame');
+              window.location.href = "/";
+            })
+            .catch(function (error) {
+              console.error(error);
+            });
+      })
+
+    },
+    getUser(){
+      axios.get(API_HOME +'api/profile',  {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('e_files_sesame')}`
+        }
+      })
+      .then(response => {
+        if (response.data) {
+          this.user = response.data;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    },
     toggleDropdown: function (event) {
       event.preventDefault();
       if (this.dropdownPopoverShow) {
@@ -82,3 +112,9 @@ export default {
   },
 };
 </script>
+
+<style>
+  .d-item:hover{
+    background-color: #cecece;
+  }
+</style>

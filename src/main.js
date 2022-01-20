@@ -36,6 +36,7 @@ import Shared from "@/views/admin/Shared";
 import Recent from "@/views/admin/Recent";
 import Starred from "@/views/admin/Starred";
 import Deleted from "@/views/admin/Deleted";
+import AddFile from "@/views/admin/AddFile";
 
 
 // routes
@@ -66,6 +67,10 @@ const routes = [
         path: "/files/trashed",
         component: Deleted,
       },
+      {
+        path: "/files/add",
+        component: AddFile,
+      },
     ],
   },
   {
@@ -95,10 +100,6 @@ const routes = [
     path: "/index",
     component: Index,
   },
-  // {
-  //   path: "/",
-  //   component: Index,
-  // },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
