@@ -7,7 +7,7 @@
           <div class="col-12">
             <div class="card-box">
               <div class="row">
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-md-3 col-sm-4">
                   <div class="file-man-box"><a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
                     <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/eps.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
                     <div class="file-man-title">
@@ -16,7 +16,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-md-3 col-sm-4">
                   <div class="file-man-box"><a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
                     <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/dll.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
                     <div class="file-man-title">
@@ -25,7 +25,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-md-3 col-sm-4">
                   <div class="file-man-box"><a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
                     <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/sql.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
                     <div class="file-man-title">
@@ -34,7 +34,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-md-3 col-sm-4">
                   <div class="file-man-box"><a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
                     <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/zip.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
                     <div class="file-man-title">
@@ -43,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-md-3 col-sm-4">
                   <div class="file-man-box"><a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
                     <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/ps.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
                     <div class="file-man-title">
@@ -52,7 +52,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-xl-2">
+                <div class="col-md-3 col-sm-4">
                   <div class="file-man-box"><a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
                     <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/png.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
                     <div class="file-man-title">
