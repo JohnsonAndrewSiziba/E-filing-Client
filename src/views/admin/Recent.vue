@@ -23,7 +23,7 @@
     </div>
 
     <div class="bootstrap-iso" style="min-height: 300px">
-      <FileManager></FileManager>
+      <FileManager :type="'recent'" :type_long="'Recently Created Files'"></FileManager>
     </div>
   </div>
 </template>

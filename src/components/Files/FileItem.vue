@@ -1,99 +1,127 @@
-<template>
-  <div>
-    <div class="content">
-      <div class="container bg-light">
-        <h5 class="mt-2 mb-4 text-secondary">{{ type_long }}</h5>
-        <div class="row">
-          <div class="col-12">
-            <div class="card-box">
-              <div class="container flex-grow-1 light-style container-p-y text-center" style="width: 100%; margin: 0; padding: 0">
-                <div class="file-manager-container file-manager-col-view" style="width: 100%; margin-left: 25px; margin-right: 0; padding: 0; margin-top: 30px; margin-bottom: 30px">
-
-                  <div class="file-item">
-                    <div class="file-item-icon file-item-level-up fas fa-level-up-alt text-secondary"></div>
-                    <a href="javascript:void(0)" class="file-item-name">
-                      ..
-                    </a>
-                  </div>
-                  <FileItem v-for="file in files" v-bind:key="file.id" :file="file"></FileItem>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <!-- end col -->
-        </div>
-        <!-- end row -->
-      </div>
-      <!-- container -->
-<!--      <FileMan></FileMan>-->
+<template class="bootstrap-iso">
+  <div class="file-item" @dblclick="getDownloadLink()" :style="hide">
+    <div v-if="$route.name !== 'Shared' && $route.name !== 'Trashed'" class="d-flex flex-row justify-content-between btn-group" style="padding-left: 5px; padding-right: 5px;">
+      <router-link :to="'/files/share/' + file.id + '/' + file.name">
+        <button class="btn btn-default btn-sm rounded-pill icon-btn borderless">
+          <i class="fas fa-share-alt-square" style="color:#999494;"></i>
+        </button>
+      </router-link>
+      <button class="btn btn-default btn-sm rounded-pill icon-btn borderless" @click="star()">
+        <i :class="star_icon" style="color:#999494;"></i>
+      </button>
+      <button class="btn btn-default btn-sm rounded-pill icon-btn borderless" @click="deleteFile()">
+        <i class="fas fa-trash-alt" style="color:#999494;"></i>
+      </button>
     </div>
+
+    <FileIcon :is_folder="file.is_folder" :type="file.file_type"></FileIcon>
+    <a href="javascript:void(0)" class="file-item-name px-1">
+      {{ file.name }}
+    </a>
+
   </div>
 </template>
-
 
 <script>
 import axios from "axios";
 import API_HOME from "@/variables/apiHome";
-import FileItem from "@/components/Files/FileItem";
+import FileIcon from "@/components/Files/FileIcon";
 
 export default {
-  name: "FileManager",
-  components: {FileItem},
-  props: ['type', 'type_long'],
+  name: "FileItem",
+  components: {FileIcon},
+  props: ['file'],
   data(){
     return {
-      files: [],
-      folders: [],
-      link: "files"
+      star_icon: "",
+      hide: ""
+    }
+  },
+  created() {
+    if (this.file.starred){
+        this.star_icon = "fas fa-star";
+    }
+    else {
+        this.star_icon = "far fa-star";
     }
   },
   methods: {
-    getFiles(){
-      axios.get(API_HOME +'api/' + this.link, {
+    deleteFile(){
+      const answer = confirm("Note: this action cannot be reversed. Are you sure you wan to delete this file? Confirm file deletion.");
+      if(! answer) return;
+      axios.post(API_HOME +'api/file_delete', {'id': this.file.id}, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('e_files_sesame')}`
         }
       })
-        .then(response => {
-          this.files = response.data;
-          // console.log("Files: ", this.files);
+      .then(response => {
+        if (response.data){
+          this.hide = "display: none";
+        }
+        else {
+          alert("An error occurred!")
+        }
+      })
+    },
+    star(){
+      axios.post(API_HOME +'api/file_star/', {'id': this.file.id}, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('e_files_sesame')}`
+        }
+      })
+      .then(response => {
+        if (response.data){
+          if (this.file.starred){
+            this.star_icon = "far fa-star";
+          }
+          else {
+            this.star_icon = "fas fa-star";
+          }
+        }
+        else {
+          alert("An error occurred!")
+        }
+      })
+    },
+    getDownloadLink(){
+      axios.get(API_HOME +'api/files/' + this.file.id, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('e_files_sesame')}`
+        }
         })
-        .catch(function (error) {
-          console.error(error);
-        });
-    }
-  },
-  created() {
-    if(this.type === 'my_files'){
-      this.link = "files";
-    }
-
-    if(this.type === 'shared'){
-      this.link = "shared_files";
-    }
-
-    if(this.type === 'recent'){
-      this.link = "recent_files";
-    }
-
-    if(this.type === 'starred'){
-      this.link = "starred_files";
-    }
-
-    if(this.type === 'trashed'){
-      this.link = "trashed_files";
-    }
-
-
-
-    this.getFiles();
+          .then(response => {
+            const url = response.data;
+            const a = document.createElement('a')
+            a.href = url
+            a.target="_blank"
+            a.download = url.split('/').pop()
+            document.body.appendChild(a)
+            a.click()
+            document.body.removeChild(a)
+          })
+          .catch(function () {
+            alert("You are not authorised to download that file");
+          });
+    },
+    getFileSize(bytes, decimals = 2){
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const dm = decimals < 0 ? 0 : decimals;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    },
   }
 }
 </script>
 
 <style scoped>
+
+
+
 body{margin-top:20px;}
 .file-manager-actions {
   display: -ms-flexbox;

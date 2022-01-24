@@ -23,7 +23,7 @@
     </div>
 
     <div class="bootstrap-iso" style="min-height: 300px">
-      <FileManager></FileManager>
+      <FileManager :type="'trashed'" :type_long="'Trashed Files'"></FileManager>
     </div>
   </div>
 </template>

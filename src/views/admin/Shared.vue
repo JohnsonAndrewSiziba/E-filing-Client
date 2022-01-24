@@ -23,7 +23,7 @@
     </div>
 
     <div class="bootstrap-iso" style="min-height: 300px">
-      <FileManager></FileManager>
+      <FileManager :type="'shared'" :type_long="'Files Shared With Me'"></FileManager>
     </div>
   </div>
 </template>

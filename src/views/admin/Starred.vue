@@ -23,7 +23,7 @@
     </div>
 
     <div class="bootstrap-iso" style="min-height: 300px">
-      <FileManager></FileManager>
+      <FileManager :type="'starred'" :type_long="'Starred Files'"></FileManager>
     </div>
   </div>
 </template>

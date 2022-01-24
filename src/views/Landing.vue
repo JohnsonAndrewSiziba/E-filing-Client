@@ -73,7 +73,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Store Files</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae eligendi expedita illo magnam necessitatibus odit perferendis possimus tenetur unde.
+                    Store any of your important work files.
                   </p>
                 </div>
               </div>
@@ -91,7 +91,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Share files</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae eligendi expedita illo magnam necessitatibus odit perferendis possimus tenetur unde.
+                    Send and receive files from your workmates. An effective way to transfer and share files
                   </p>
                 </div>
               </div>
@@ -109,7 +109,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Secure</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae eligendi expedita illo magnam necessitatibus odit perferendis possimus tenetur unde.
+                    This app is secure. No one can access your files without your consent
                   </p>
                 </div>
               </div>
@@ -159,7 +159,7 @@
                 </div>
                 <h3 class="text-3xl font-semibold">Get it on desktop</h3>
                 <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae eligendi expedita illo magnam necessitatibus odit perferendis possimus tenetur unde.
+                  E-Files is available as a desktop app for both Mac and Windows. Download the installable files below
                 </p>
                 <ul class="list-none mt-6">
                   <li class="py-2">

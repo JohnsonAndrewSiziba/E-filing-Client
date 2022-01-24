@@ -21,19 +21,17 @@
     </div>
 
     <div class="bootstrap-iso" style="min-height: 300px">
-     <FileManager></FileManager>
+     <FileManager :type="'my_files'" :type_long="'My Files'"></FileManager>
     </div>
   </div>
 </template>
 <script>
 import FileManager from "@/components/Files/FileManager";
-import AddFileModal from "@/components/Modals/AddFileModal";
 import AddButton from "@/components/MiscComponents/AddButton";
 export default {
   name: "dashboard-page",
   components: {
     AddButton,
-    AddFileModal,
     FileManager,
   },
   data() {

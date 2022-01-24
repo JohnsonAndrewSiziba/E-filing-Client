@@ -96,6 +96,9 @@ export default {
       })
       .catch(function (error) {
         console.error(error);
+        console.log("Logging out!");
+        localStorage.removeItem('e_files_sesame');
+        window.location.href = "/";
       });
     },
     toggleDropdown: function (event) {

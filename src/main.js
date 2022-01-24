@@ -37,6 +37,7 @@ import Recent from "@/views/admin/Recent";
 import Starred from "@/views/admin/Starred";
 import Deleted from "@/views/admin/Deleted";
 import AddFile from "@/views/admin/AddFile";
+import SharePage from "@/views/admin/SharePage";
 
 
 // routes
@@ -53,6 +54,7 @@ const routes = [
       },
       {
         path: "/files/shared",
+        name: "Shared",
         component: Shared,
       },
       {
@@ -65,11 +67,17 @@ const routes = [
       },
       {
         path: "/files/trashed",
+        name: "Trashed",
         component: Deleted,
       },
       {
         path: "/files/add",
         component: AddFile,
+      },
+      {
+        path: "/files/share/:id/:name",
+        name: "SharePage",
+        component: SharePage,
       },
     ],
   },
