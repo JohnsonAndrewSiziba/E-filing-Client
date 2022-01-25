@@ -11,3 +11,8 @@ The documentation for the Vue Notus is hosted at <a href="https://www.creative-t
 - <a href="https://www.creative-tim.com/product/vue-notus?ref=vn-github-readme" target="_blank">Download from Creative Tim</a>.
 - <a href="https://github.com/creativetimofficial/vue-notus" target="_blank">Check it on Github</a>.
 <hr />
+
+
+
+Electron <br>
+https://blog.logrocket.com/building-app-electron-vue/
