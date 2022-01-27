@@ -14,9 +14,9 @@ protocol.registerSchemesAsPrivileged([
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    icon:  './logo.jpeg',
+    width: 1200,
+    height: 700,
+    icon: __dirname + '/cabinet.icns',
     webPreferences: {
 
       // Use pluginOptions.nodeIntegration, leave this alone

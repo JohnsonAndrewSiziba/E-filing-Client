@@ -18,6 +18,9 @@
     <a href="javascript:void(0)" class="file-item-name px-1">
       {{ file.name }}
     </a>
+    <span v-if="file.user">
+      <small class="text-secondary" style="font-size: 11px">{{ file.user.name }}</small>
+    </span>
 
   </div>
 </template>
@@ -47,7 +50,7 @@ export default {
   },
   methods: {
     deleteFile(){
-      const answer = confirm("Note: this action cannot be reversed. Are you sure you wan to delete this file? Confirm file deletion.");
+      const answer = confirm("This action cannot be reversed. Please confirm deletion.");
       if(! answer) return;
       axios.post(API_HOME +'api/file_delete', {'id': this.file.id}, {
         headers: {
@@ -103,7 +106,7 @@ export default {
             document.body.removeChild(a)
           })
           .catch(function () {
-            alert("You are not authorised to download that file");
+            alert("You are not authorised to download this file.");
           });
     },
     getFileSize(bytes, decimals = 2){

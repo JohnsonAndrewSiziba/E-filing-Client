@@ -8,7 +8,7 @@
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
               <h6 class="text-blueGray-500 text-sm font-bold">
-                Sign In
+                Login
               </h6>
               <div class="bootstrap-iso">
                 <div class="alert alert-danger" role="alert" v-if="error !== null" >
@@ -25,7 +25,7 @@
             <div class="text-blueGray-400 text-center mb-3 font-bold">
               <small>Enter username and password</small>
             </div>
-            <form>
+            <form v-if="loggedIn === false">
               <div class="relative w-full mb-3">
                 <label
                   class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -58,19 +58,6 @@
                     placeholder="Password"
                 />
               </div>
-<!--              <div>-->
-<!--                <label class="inline-flex items-center cursor-pointer">-->
-<!--                  <input-->
-<!--                      v-model="remember"-->
-<!--                      id="customCheckLogin"-->
-<!--                      type="checkbox"-->
-<!--                      class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"-->
-<!--                  />-->
-<!--                  <span class="ml-2 text-sm font-semibold text-blueGray-600">-->
-<!--                    Remember me-->
-<!--                  </span>-->
-<!--                </label>-->
-<!--              </div>-->
 
               <div class="text-center mt-6">
                 <button
@@ -78,10 +65,17 @@
                   type="button"
                   @click="handleSubmit"
                 >
-                  Sign In
+                  Submit
                 </button>
               </div>
             </form>
+
+            <div v-else>
+              <div class="bootstrap-iso">
+                <router-link to="/files"> <a href="/files" class="btn btn-outline-secondary btn-lg px-5 mt-2">Continue To Account</a> </router-link>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -102,7 +96,8 @@ export default {
       email: "",
       password: "",
       remember: "",
-      error: null
+      error: null,
+      loggedIn: false,
     };
   },
   methods: {
@@ -122,7 +117,9 @@ export default {
             .then(response => {
               if (response.data.success === true) {
                 localStorage.setItem('e_files_sesame', response.data.token);
-                window.location.href = "/files";
+                // this.$router.push('/files')
+                alert("Login successful. You can now proceed to your account.");
+                this.loggedIn = true;
               } else {
                 this.error = response.data.message
               }

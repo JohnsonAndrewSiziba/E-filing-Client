@@ -38,6 +38,7 @@ import Starred from "@/views/admin/Starred";
 import Deleted from "@/views/admin/Deleted";
 import AddFile from "@/views/admin/AddFile";
 import SharePage from "@/views/admin/SharePage";
+import ChangePassword from "@/views/auth/ChangePassword";
 
 
 // routes
@@ -50,6 +51,7 @@ const routes = [
     children: [
       {
         path: "/files/my-files",
+        name: "Dashboard",
         component: Dashboard,
       },
       {
@@ -93,6 +95,10 @@ const routes = [
       {
         path: "/auth/register",
         component: Register,
+      },
+      {
+        path: "/auth/change_password",
+        component: ChangePassword,
       },
     ],
   },

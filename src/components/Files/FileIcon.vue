@@ -18,15 +18,19 @@ export default {
         console.log("Got gere")
         this.icon = 'fa fa-file-excel';
         break;
+
       case "pdf":
         this.icon = 'far fa-file-pdf'
         break;
+
       case "gif": case "png": case "jpg": case "jpeg":
         this.icon = 'far fa-file-image'
         break;
+
       case "doc": case "docx":
         this.icon = 'far fa-file-word'
         break;
+
       case "mp4":
         this.icon = 'far fa-file-video'
         break;
@@ -38,8 +42,6 @@ export default {
       case "py":
         this.icon = 'fab fa-python'
         break;
-
-
 
       default:
         this.icon = 'fa fa-file';

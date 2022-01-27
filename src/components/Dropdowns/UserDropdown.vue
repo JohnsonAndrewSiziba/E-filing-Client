@@ -32,6 +32,13 @@
       >
         {{ user.name }}
       </a>
+      <router-link to="/auth/change_password">
+        <span
+            class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 d-item"
+        >
+          Change Password
+        </span>
+      </router-link>
       <a
         href="javascript:void(0);"
         @click="logout"
@@ -74,7 +81,8 @@ export default {
             .then(response => {
               alert(response.data.message);
               localStorage.removeItem('e_files_sesame');
-              window.location.href = "/";
+              // window.location.href = "/";
+              this.$router.push('/')
             })
             .catch(function (error) {
               console.error(error);
@@ -98,7 +106,7 @@ export default {
         console.error(error);
         console.log("Logging out!");
         localStorage.removeItem('e_files_sesame');
-        window.location.href = "/";
+        window.location.reload();
       });
     },
     toggleDropdown: function (event) {

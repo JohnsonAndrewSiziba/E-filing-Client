@@ -101,7 +101,7 @@ export default {
       )
       .then(response => {
         if (response){
-          alert("File saves successfully!");
+          alert("File saved successfully!");
         }
         this.files = [];
       })

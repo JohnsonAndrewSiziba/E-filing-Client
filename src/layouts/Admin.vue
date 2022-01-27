@@ -16,6 +16,9 @@ import AdminNavbar from "@/components/Navbars/AdminNavbar.vue";
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import HeaderStats from "@/components/Headers/HeaderStats.vue";
 import FooterAdmin from "@/components/Footers/FooterAdmin.vue";
+import APP_VERSION from "@/variables/appVersion";
+import axios from "axios";
+import API_HOME from "@/variables/apiHome";
 export default {
   name: "admin-layout",
   components: {
@@ -24,8 +27,32 @@ export default {
     HeaderStats,
     FooterAdmin,
   },
-  created() {
+  methods: {
+    getCurrentValidVersion(){
+      const version = APP_VERSION;
+      axios.get(API_HOME +'api/current_version')
+          .then(response => {
+            // return response.data;
+             const data = response.data;
+            const currentValidVersion = data.version;
 
+            if(data.tba === true){
+              alert('This version of E-Files will become obsolete on ' + data.date + '. Please download the latest version of the app.')
+            }
+            if(version !== currentValidVersion){
+              alert('This version of E-Files is now obsolete. Please download the latest version of the app.')
+              window.location.href = "/";
+            }
+
+          })
+          .catch(function (error) {
+            console.error(error);
+            alert("An error occurred. Unable to communicate with server. Please alert the Administrator.")
+          });
+    }
+  },
+  created() {
+    this.getCurrentValidVersion();
   },
   beforeRouteEnter(to, from, next) {
     let sesame = localStorage.getItem('e_files_sesame');

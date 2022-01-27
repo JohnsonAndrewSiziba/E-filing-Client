@@ -10,6 +10,7 @@
               <card-stats
                   statSubtitle=""
                   statTitle="Shared"
+                  :statPercent=sharedCount
                   statPercentColor="text-emerald-500"
                   statIconName="far fa-share-square"
                   statIconColor="js-bg-blue"
@@ -22,7 +23,7 @@
                   statSubtitle=""
                   statTitle="Recent Files"
                   statArrow="up"
-                  statPercent="3.48"
+                  :statPercent=recentCount
                   statIconName="fas fa-calendar-plus"
                   statIconColor="js-bg-blue"
               />
@@ -34,7 +35,7 @@
                   statSubtitle=""
                   statTitle="Starred"
                   statArrow="up"
-                  statPercent="3.48"
+                  :statPercent=starredCount
                   statIconName="fas fa-star"
                   statIconColor="js-bg-blue"
               />
@@ -46,7 +47,7 @@
                   statSubtitle=""
                   statTitle="Trashed"
                   statArrow="up"
-                  statPercent="3.48"
+                  :statPercent='trashedCount'
                   statIconName="fas fa-trash-alt"
                   statIconColor="js-bg-blue"
               />
@@ -60,11 +61,72 @@
 
 <script>
 import CardStats from "@/components/Cards/CardStats.vue";
+import axios from "axios";
+import API_HOME from "@/variables/apiHome";
 
 export default {
   components: {
     CardStats,
   },
+  data(){
+    return {
+        sharedCount: "",
+        recentCount: "",
+        starredCount: "",
+        trashedCount: "",
+    }
+  },
+  methods: {
+    get(link) {
+      axios.get(API_HOME +'api/' + link, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('e_files_sesame')}`
+        }
+      })
+          .then(response => {
+            let type = response.data.type
+            let data = response.data.data
+
+            if(type === 'shared'){
+              this.sharedCount = data;
+            }
+            else if(type === 'recent'){
+              this.recentCount = data;
+            }
+            else if(type === 'starred'){
+              this.starredCount = data;
+            }
+            else if(type === 'trashed'){
+              this.trashedCount = data;
+            }
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+    },
+    getSharedCount(){
+        this.get('shared_count');
+    },
+
+    getRecentCount(){
+      this.get('recent_count');
+    },
+
+    getStarredCount(){
+      this.get('starred_count');
+    },
+
+    getTrashedCount(){
+      this.get('trashed_count');
+    },
+  },
+  created() {
+    this.getSharedCount();
+    this.getRecentCount();
+    this.getStarredCount();
+    this.getTrashedCount();
+  }
 };
 </script>
 

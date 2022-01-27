@@ -27,7 +27,7 @@
                 </p>
                 <div class="bootstrap-iso">
                   <p v-if="showLogin === true">
-                    <router-link to="/auth/login"> <a href="/auth/login" class="btn btn-outline-light btn-lg px-5 mt-2">Login / Signup</a> </router-link>
+                    <router-link to="/auth/login"> <a href="/auth/login" class="btn btn-outline-light btn-lg px-5 mt-2">Login</a> </router-link>
                   </p>
                   <p v-else>
                     <router-link to="/files"> <a href="/files" class="btn btn-outline-light btn-lg px-5 mt-2">Continue To Account</a> </router-link>
@@ -173,7 +173,7 @@
                       </div>
                       <div>
                         <h4 class="text-blueGray-500">
-                          Windows
+                          <a target="_blank" href="http://137.184.71.82/">Windows</a>
                         </h4>
                       </div>
                     </div>
@@ -189,7 +189,7 @@
                       </div>
                       <div>
                         <h4 class="text-blueGray-500">
-                          Mac OS
+                          <a target="_blank" href="http://137.184.71.82/">Mac OS</a>
                         </h4>
                       </div>
                     </div>
