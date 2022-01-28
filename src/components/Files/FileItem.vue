@@ -29,6 +29,7 @@
 import axios from "axios";
 import API_HOME from "@/variables/apiHome";
 import FileIcon from "@/components/Files/FileIcon";
+import Swal from "sweetalert2";
 
 export default {
   name: "FileItem",
@@ -51,6 +52,7 @@ export default {
   methods: {
     deleteFile(){
       const answer = confirm("This action cannot be reversed. Please confirm deletion.");
+
       if(! answer) return;
       axios.post(API_HOME +'api/file_delete', {'id': this.file.id}, {
         headers: {
@@ -61,6 +63,12 @@ export default {
       .then(response => {
         if (response.data){
           this.hide = "display: none";
+          Swal.fire({
+            icon: 'success',
+            title: 'Deleted successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
         else {
           alert("An error occurred!")

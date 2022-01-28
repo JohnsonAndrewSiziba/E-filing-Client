@@ -87,6 +87,8 @@ import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
 import axios from "axios";
 import API_HOME from "@/variables/apiHome";
+const Swal = require('sweetalert2')
+
 
 export default {
   data() {
@@ -100,6 +102,16 @@ export default {
       loggedIn: false,
     };
   },
+
+
+  // created() {
+  //   Swal.fire(
+  //       'Processing',
+  //       'Please wait...',
+  //       'info'
+  //   )
+  //   Swal.showLoading()
+  // },
   methods: {
     handleSubmit(e) {
       e.preventDefault()
@@ -117,8 +129,12 @@ export default {
             .then(response => {
               if (response.data.success === true) {
                 localStorage.setItem('e_files_sesame', response.data.token);
-                // this.$router.push('/files')
-                alert("Login successful. You can now proceed to your account.");
+                Swal.fire({
+                  icon: 'success',
+                  title: 'You have successfully logged in.',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 this.loggedIn = true;
               } else {
                 this.error = response.data.message

@@ -19,6 +19,7 @@ import FooterAdmin from "@/components/Footers/FooterAdmin.vue";
 import APP_VERSION from "@/variables/appVersion";
 import axios from "axios";
 import API_HOME from "@/variables/apiHome";
+import Swal from "sweetalert2";
 export default {
   name: "admin-layout",
   components: {
@@ -51,9 +52,33 @@ export default {
           });
     }
   },
+
   created() {
     this.getCurrentValidVersion();
+
+    // axios.interceptors.request.use((config) => {
+    //   Swal.fire(
+    //       'Processing',
+    //       'Please wait...',
+    //       'info'
+    //   )
+    //   Swal.showLoading()
+    //   return config;
+    // }, (error) => {
+    //   // trigger 'loading=false' event here
+    //   return Promise.reject(error);
+    // });
+    //
+    // axios.interceptors.response.use((response) => {
+    //   Swal.close()
+    //   return response;
+    // }, (error) => {
+    //   // trigger 'loading=false' event here
+    //   return Promise.reject(error);
+    // });
   },
+
+
   beforeRouteEnter(to, from, next) {
     let sesame = localStorage.getItem('e_files_sesame');
     if (! sesame) {

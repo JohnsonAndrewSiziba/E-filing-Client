@@ -26,6 +26,7 @@
     "core-js": "3.9.1",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
+    "sweetalert2": "^11.3.10",
     "tailwindcss": "2.0.4",
     "vue": "3.0.7",
     "vue-router": "4.0.5",

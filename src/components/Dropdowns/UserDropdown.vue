@@ -56,6 +56,7 @@ import { createPopper } from "@popperjs/core";
 import image from "@/assets/img/avatar.png";
 import axios from "axios";
 import API_HOME from "@/variables/apiHome";
+import Swal from "sweetalert2";
 
 export default {
   data() {
@@ -79,7 +80,12 @@ export default {
           }
         })
             .then(response => {
-              alert(response.data.message);
+              Swal.fire({
+                icon: 'success',
+                title: response.data.message,
+                showConfirmButton: false,
+                timer: 1500
+              })
               localStorage.removeItem('e_files_sesame');
               // window.location.href = "/";
               this.$router.push('/')

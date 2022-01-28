@@ -1,7 +1,8 @@
 <style>
 input[type="file"]{
   position: absolute;
-  top: -500px;
+  top: -500000px;
+  display: none;
 }
 
 
@@ -46,6 +47,7 @@ span.remove-file{
 <script>
 import axios from "axios";
 import API_HOME from "@/variables/apiHome";
+import Swal from "sweetalert2";
 
 export default {
   /*
@@ -101,7 +103,13 @@ export default {
       )
       .then(response => {
         if (response){
-          alert("File saved successfully!");
+          // alert("File saved successfully!");
+          Swal.fire({
+            icon: 'success',
+            title: 'File saved successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
         this.files = [];
       })
