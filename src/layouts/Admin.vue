@@ -56,26 +56,26 @@ export default {
   created() {
     this.getCurrentValidVersion();
 
-    // axios.interceptors.request.use((config) => {
-    //   Swal.fire(
-    //       'Processing',
-    //       'Please wait...',
-    //       'info'
-    //   )
-    //   Swal.showLoading()
-    //   return config;
-    // }, (error) => {
-    //   // trigger 'loading=false' event here
-    //   return Promise.reject(error);
-    // });
-    //
-    // axios.interceptors.response.use((response) => {
-    //   Swal.close()
-    //   return response;
-    // }, (error) => {
-    //   // trigger 'loading=false' event here
-    //   return Promise.reject(error);
-    // });
+    axios.interceptors.request.use((config) => {
+      Swal.fire(
+          'Processing',
+          'Please wait...',
+          'info'
+      )
+      Swal.showLoading()
+      return config;
+    }, (error) => {
+      // trigger 'loading=false' event here
+      return Promise.reject(error);
+    });
+
+    axios.interceptors.response.use((response) => {
+      Swal.close()
+      return response;
+    }, (error) => {
+      // trigger 'loading=false' event here
+      return Promise.reject(error);
+    });
   },
 
 
